@@ -1,4 +1,4 @@
-name: CI
+name: Verify test run on PR
 
 on:
   pull_request:
