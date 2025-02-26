@@ -1,5 +1,5 @@
 {
-  "name": "bhr-document-store",
+  "name": "task-manager",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,8 +12,13 @@
     "test": "vitest --environment jsdom"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.476.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.6.0",
