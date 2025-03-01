@@ -109,6 +109,10 @@ function TaskForm({ className }: React.ComponentProps<"form">) {
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
+        defaultValues: {
+            title: activeCard?.title || '',
+            description: activeCard?.description || ''
+        },
     })
 
     const onSubmit = React.useCallback((submission: z.infer<typeof FormSchema>) => {
@@ -120,7 +124,7 @@ function TaskForm({ className }: React.ComponentProps<"form">) {
         if (isNew) {
             overwrittenData.Pending?.push({
                 ...submission,
-                dateCreated: new Date().toDateString(),
+                dateCreated: new Date().toISOString(),
                 index: overwrittenData.Pending.length,
             })
         } else {
@@ -157,7 +161,7 @@ function TaskForm({ className }: React.ComponentProps<"form">) {
                         <FormItem className="grid gap-2">
                             <FormLabel>Title</FormLabel>
                             <FormControl>
-                                <Input {...field} defaultValue={activeCard?.title} />
+                                <Input {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -171,8 +175,7 @@ function TaskForm({ className }: React.ComponentProps<"form">) {
                             <FormLabel>Description</FormLabel>
                             <FormControl>
                                 <Textarea 
-                                    {...field} 
-                                    defaultValue={activeCard?.description} 
+                                    {...field}
                                     className="resize-y max-h-[350px] min-h-[180px]"
                                 />
                             </FormControl>
