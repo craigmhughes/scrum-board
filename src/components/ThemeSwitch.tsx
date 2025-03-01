@@ -33,7 +33,7 @@ export function ThemeSwitch() {
                 const Icon = themeIcons[theme as keyof typeof themeIcons]
             
                 return (
-                    <TooltipProvider>
+                    <TooltipProvider key={theme}>
                         <Tooltip>
                         <TooltipTrigger asChild>
                             <ToggleGroupItem 
