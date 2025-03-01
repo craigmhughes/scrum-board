@@ -18,14 +18,18 @@ type ActiveCardState = {
     setOpen: (val: boolean) => void
     setData: (data: TaskData) => void
     activeCard?: TaskCardType
-    data?: TaskData
+    data: TaskData
 }
 
 
 const initialState: ActiveCardState = {
     activeCard: undefined,
     open: false,
-    data: undefined,
+    data: {
+        "Pending": [],
+        "In Progress": [],
+        "Completed": []
+    },
     setActiveCard: () => null,
     setOpen: () => null,
     setData: () => null,
