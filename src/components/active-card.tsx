@@ -1,5 +1,5 @@
 import mockData from '@/mocks/data.json'
-import React from "react"
+import React, { useCallback } from "react"
 import { Task, TaskCardType } from "./TaskCard"
 
 export type TaskData = {
@@ -41,9 +41,16 @@ export function ActiveCardProvider({
     children,
     ...props
 }: ActiveCardInterface) {
-    const [data, setData] = React.useState<TaskData>(mockData)
+    const [data, setData] = React.useState<TaskData>((
+        JSON.parse(localStorage.getItem("taskData") || JSON.stringify(initialState.data))
+    ))
     const [activeCard, setActiveCard] = React.useState<TaskCardType>()
     const [open, setOpen] = React.useState<boolean>(false)
+
+    const updateData = useCallback((newData: TaskData) => {
+        localStorage.setItem("taskData", JSON.stringify(newData))
+        setData(newData)
+    }, [setData])
 
     const value = {
         open,
@@ -51,7 +58,7 @@ export function ActiveCardProvider({
         data,
         setOpen,
         setActiveCard,
-        setData
+        setData: updateData
     }
 
     return (
