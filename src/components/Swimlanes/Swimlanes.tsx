@@ -1,14 +1,8 @@
-import mockData from '@/mocks/data.json'
 import Swimlane from "./Swimlane";
 import { DragDropContext, DropResult } from "@hello-pangea/dnd";
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Task, TaskCardType } from '../TaskCard';
-
-type TaskData = {
-    "Pending": Task[],
-    "In Progress": Task[],
-    "Completed": Task[],
-}
+import { TaskData, useActiveCard } from '../active-card';
 
 type TaskCards = {
     "Pending": TaskCardType[],
@@ -21,6 +15,12 @@ type DragAndDropTransfer = {
     destination: Task[]
 }
 
+const EmptyData = {
+    "Pending": [],
+    "In Progress": [],
+    "Completed": [],
+}
+
 const findColumnById = (data: TaskData, id: string) => {
     const keys = Object.keys(data)
     const foundId = keys.map((i) => i.toLowerCase().replace(/ /g, "-")).findIndex((i) => i === id)
@@ -28,9 +28,11 @@ const findColumnById = (data: TaskData, id: string) => {
 }
 
 export default function Swimlanes() {
-    const [data, setData] = useState<TaskData>(mockData)
+    const {data, setData} = useActiveCard()
 
     const draggableData = useMemo<TaskCards>(() => {
+        if (!data) return EmptyData
+
         let newData = {...data}
         Object.keys(newData).forEach((key) => {
             let column = newData[key as keyof typeof newData]
@@ -44,7 +46,7 @@ export default function Swimlanes() {
     }, [data])
 
     const updateCardPlacement = useCallback((e: DropResult<string>) => {
-        if (!e.destination) return
+        if (!e.destination || !data) return
 
         const { droppableId: destinationColumnId, index: toIndex } = e.destination;
         const { droppableId: sourceColumnId, index: sourceIndex } = e.source;
@@ -82,7 +84,11 @@ export default function Swimlanes() {
             <h1>Your Sprint</h1>
             <DragDropContext onDragEnd={(e) => updateCardPlacement(e)}>
                 {draggableData && Object.keys(draggableData).map((key) => (
-                    <Swimlane title={key} cards={draggableData[key as keyof typeof data]} key={key} />
+                    <Swimlane 
+                        title={key} 
+                        cards={draggableData[key as keyof typeof data]} 
+                        key={key} 
+                    />
                 ))}
             </DragDropContext>
         </>
