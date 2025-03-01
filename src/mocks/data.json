@@ -1,0 +1,44 @@
+{
+    "Pending": [
+        {
+            "index": 1,
+            "title": "Design Landing Page",
+            "description": "Create a wireframe for the main landing page. This involves sketching out the visual layout, defining navigation, and preparing a user-friendly design. Ensure the page is responsive and aligns with the project branding. Collaboration with the UX team is required to refine user flows and improve the overall user experience.",
+            "dateCreated": "2025-02-20T00:00:00Z"
+        },
+        {
+            "index": 2,
+            "title": "Write API Documentation",
+            "description": "Document all backend API endpoints. This includes detailing request formats, response structures, error codes, and example payloads. Ensure the documentation is clear and comprehensive to support developers during integration. Regularly update the document to reflect changes and new features in the API.",
+            "dateCreated": "2025-02-22T00:00:00Z"
+        }
+    ],
+    "In Progress": [
+        {
+            "index": 1,
+            "title": "Implement Authentication",
+            "description": "Set up JWT-based authentication for the app. This task requires creating secure login, registration, and token validation. Ensure password hashing and secure storage methods are in place. Implement session management to handle token expiration and refresh, ensuring a smooth and secure user experience.",
+            "dateCreated": "2025-02-18T00:00:00Z"
+        },
+        {
+            "index": 2,
+            "title": "Build Task Drag & Drop",
+            "description": "Implement drag-and-drop functionality for the board. This includes creating a responsive interface to move tasks between columns. Ensure smooth animations and user feedback for better interaction. Validate task status updates and maintain consistent data across the application state.",
+            "dateCreated": "2025-02-19T00:00:00Z"
+        }
+    ],
+    "Completed": [
+        {
+            "index": 1,
+            "title": "Setup Project Structure",
+            "description": "Initialize the React project with required dependencies. This involves setting up a modular codebase, defining folder conventions, and integrating key libraries. Ensure the environment supports scalable development and establish a reliable foundation for future features and enhancements.",
+            "dateCreated": "2025-02-15T00:00:00Z"
+        },
+        {
+            "index": 2,
+            "title": "Create UI Components",
+            "description": "Develop reusable components for the Scrum board. This includes creating dynamic widgets for task cards, columns, and user inputs. Ensure components are modular, styled consistently, and compatible across different screens. Focus on performance optimization and easy maintenance.",
+            "dateCreated": "2025-02-16T00:00:00Z"
+        }
+    ]
+}
