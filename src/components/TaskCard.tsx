@@ -36,6 +36,14 @@ export default function TaskCard({...props}: TaskCardType) {
                         setActiveCard({...props})
                         setOpen(true);
                     }}
+                    onKeyUp={(e) => {
+                        // TODO: look into more possible interaction values to capture. 
+                        // Using "space" on cards allows us to use the drag and drop feature.
+                        if (e.key === "Enter") {
+                            setActiveCard({...props})
+                            setOpen(true);
+                        }
+                    }}
                 >
                     <CardHeader>
                         <CardTitle className="text-lg font-normal">{props.title}</CardTitle>
