@@ -37,7 +37,7 @@ export default function Swimlane({
                     >
                     {cards.length > 0 ? (
                         <div className="p-2.5 py-3.25 flex flex-col gap-3 mb-6 lg:mb-0 transition-all">
-                            {cards.map((card, index) => <TaskCard {...card} index={index} />)}
+                            {cards.map((card, index) => <TaskCard {...card} index={index} key={index} />)}
                         </div>
                     ) : (
                         <div style={{borderColor: laneHover}} className="p-2.5 py-3.25 rounded-lg text-sm mt-6 border">
