@@ -34,6 +34,7 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TaskCardType } from "./TaskCard"
+import { Plus, TrashIcon } from "lucide-react"
 
 export function EditCard() {
   const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -51,7 +52,7 @@ export function EditCard() {
     return (
       <Dialog open={open} onOpenChange={newTask}>
         <DialogTrigger asChild>
-          <Button variant="outline">Create Task</Button>
+          <Button>Create Task <Plus /></Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -66,7 +67,7 @@ export function EditCard() {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="outline">Create Task</Button>
+        <Button>Create Task</Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
@@ -179,8 +180,15 @@ function TaskForm({ className }: React.ComponentProps<"form">) {
                         </FormItem>
                     )} 
                 />        
-                <Button type="submit">Submit</Button>
-                <Button type="button" variant="secondary" onClick={() => deleteTask()}>Delete</Button>
+                <div className="flex items-center gap-2">
+                    <Button type="submit" className="w-full">Submit</Button>
+                    {activeCard && (
+                        <Button type="button" variant="secondary" className="w-[20%]" onClick={() => deleteTask()}>
+                            <TrashIcon />
+                            <p className="sr-only">Delete Task</p>
+                        </Button>
+                    )}
+                </div>
             </form>
         </Form>
     )

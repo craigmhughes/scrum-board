@@ -28,7 +28,7 @@ export default function TaskCard({...props}: TaskCardType) {
         <Draggable draggableId={props.draggableId} index={props.index ?? 0} key={props.draggableId}>
             {(provided) => (
                 <Card 
-                    className="text-left"
+                    className="text-left bg-white dark:bg-gray-50/5"
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}

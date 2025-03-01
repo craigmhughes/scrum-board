@@ -21,6 +21,12 @@ const EmptyData = {
     "Completed": [],
 }
 
+const laneColors = {
+    "Pending": "#FFBB54",
+    "In Progress": "#727EEC",
+    "Completed": "#51D0BD",
+}
+
 const findColumnById = (data: TaskData, id: string) => {
     const keys = Object.keys(data)
     const foundId = keys.map((i) => i.toLowerCase().replace(/ /g, "-")).findIndex((i) => i === id)
@@ -80,17 +86,17 @@ export default function Swimlanes() {
     }, [data])
 
     return (
-        <>
-            <h1>Your Sprint</h1>
-            <DragDropContext onDragEnd={(e) => updateCardPlacement(e)}>
+        <DragDropContext onDragEnd={(e) => updateCardPlacement(e)}>
+            <div className="lg:flex lg:gap-4">
                 {draggableData && Object.keys(draggableData).map((key) => (
                     <Swimlane 
                         title={key} 
                         cards={draggableData[key as keyof typeof data]} 
                         key={key} 
+                        laneColor={laneColors[key as keyof typeof laneColors]}
                     />
                 ))}
-            </DragDropContext>
-        </>
+            </div>
+        </DragDropContext>
     )
 }
