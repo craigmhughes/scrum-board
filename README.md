@@ -1,5 +1,8 @@
 # Task Manager
 
+![image](https://github.com/user-attachments/assets/ef730760-bd29-4d78-86ee-931adbc3be8d)
+
+
 This is a single page application where a user can create & track tasks on a board.
 
 The following features have been implemented:
